@@ -23,38 +23,8 @@ const checkName = (name) => {
     *** domain - The domain name [for example com, org, net, in, us, info] part contains letters, digits, hyphens, and dots.
 */
 function checkEmail(email) {
-    let regex =  /^(([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5}){1,25})+([;.](([a-zA-Z0-9_\-\.]+)@{[a-zA-Z0-9_\-\.]+0\.([a-zA-Z]{2,5}){1,25})+)*$/;
-    
+    let regex =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+
 }
 
-// Password must have 8-64 characters and include 1 letter, 1 number, and 1 special character
-function checkPassword(password) {
-    if (!password) {
-        return "Please enter your password.";
-
-    } else {
-        if (password.length < 8 || password.length > 64) {
-            return "Password length must be between 8 and 64.";
-        }
-
-        regex = /[a-z]+/i;
-
-        if (!password.match(regex)) {
-            return "Password must contain at least 1 letter.";
-        }
-
-        regex = /[0-9]+/;
-
-        if (!password.match(regex)) {
-            return "Password must contain at least 1 number.";
-        }
-
-        regex = /[!@#$%^&*()<>{}\[\]-_+=|\\;:'",./?]+/;
-
-        if (!password.match(regex)) {
-            return "Password must contain at least 1 special character.";
-        }
-    }
-
-    return "success";
-}
+//
