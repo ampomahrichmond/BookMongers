@@ -1,7 +1,128 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    @import url(https://fonts.googleapis.com/icon?family=Material+Icons); 
+/* embed CSS */
+</style>
+  </div>
+</head>
+
+<body>
+  <title>Welcome Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="row">
+        <div class="col s12 m4 l2"></div>
+        <div class="col s12 m4 l2"></div>
+        <div class="col s12 m4 18">
+          <div class="card #fff3e0 orange lighten-5">
+            <div class="card-content black-text">
+              <span class="card-title">
+                <h2 class="center-align">#BookMongers</h2>
+              </span>
+              <p class="center-align">Welcome To Your Favorite BookShop Collections</p>
+              <div class="card-content black-text">
+                <label for="username">Username:</label>
+                <input type="text" id="loginUser" name="username">
+                <label for="password">Password:</label>
+                <input type="password" id="loginPassword" name="password">
+              </div>
+              <div id="lower">
+                <!-- <label>
+                                  <input id="indeterminate-checkbox" type="checkbox" />
+                                  <span>Keep me logged in.</span>
+                              </label> -->
+              </div>
+              <div class="center-align">
+                <div class="card-action">
+                  <div class="btn #1976d2 blue darken-2">
+                    <a href="#" id="btnSignIn">Sign In</a>
+                    <button onclick="document.getElementById('btnSignUp').style.display='block'" style=width:auto;">Signup</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!-- OPEN MODAL  -->
+    <div id="btnSignUp" class="modal">
+      <form class="col s14">
+        <div class="row">
+          <div class="input-field hoverable col s6">
+            <i class="material-icons prefix">contacts</i>
+            <input id="first_name" type="text" class="validate">
+            <label for="first_name">First Name</label>
+          </div>
+          <div class="input-field hoverable col s6">
+            <i class="material-icons prefix">contacts</i>
+            <input id="last_name" type="text" class="validate">
+            <label for="last_name">Last Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field hoverable col s6">
+            <i class="material-icons prefix">account_circle</i>
+            <input id="username" type="text" class="validate">
+            <label for="username">Username</label>
+          </div>
+          <div class="input-field hoverable col s6">
+            <i class="material-icons prefix">email</i>
+            <input id="email" type="email" class="validate">
+            <label for="email">Email</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field hoverable col s6">
+            <i class="material-icons prefix">vpn_key</i>
+            <input id="password" type="password" class="validate">
+            <label for="password">Password</label>
+          </div>
+          <div class="input-field hoverable col s6">
+            <i class="material-icons prefix">replay</i>
+            <input id="chkpwd" type="password" class="validate">
+            <label for="chkpwd">Retype Password</label>
+          </div>
+        </div>
+        <a class="waves-effect waves-light btn right hoverable"><i class="large material-icons right">done</i>register</a>
+        <a class="waves-effect waves-light btn left hoverable"><i class="large material-icons left">done</i>Cancel</a>
+        <div class="container" style="background-color:#f1f1f1">
+          <!-- <button type="button" onclick="document.getElementById('btnSignUp').style.display='none'" class="cancelbtn">Cancel</button> -->
+        </div>
+      </form>
+
+    </div>
+    <script>
+      // Get the modal
+      var modal = document.getElementById('btnSignUp');
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+    </script>
+
+  </body>
+=======
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Login Page</title>
 
