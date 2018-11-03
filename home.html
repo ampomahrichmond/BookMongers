@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+        /* embed CSS */
+    </style>
+    </div>
+</head>
+
+<title>Welcome Page</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./assets/css/reset.css">
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+    <div class="container" id="homePage">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">#BooKMongers</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a class="waves-effect waves-light btn" href="home.html">Home</a></li>
+                    <li><a class="waves-effect waves-light btn" href="owned.html">Owned</a></li>
+                    <li><a class="waves-effect waves-light btn" href="search.html">Search</a></li>
+                    <li><a class="waves-effect waves-light btn modal-trigger" href="#signUpModal" id="logout">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div>
+            <div class="card">
+                <div class="card-image">
+                    <img src="./assets/images/welcome.jpeg">
+                    <div id="welcomeMessage" class="center-align"></div>
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content" id="welcomeMessage" class="center-align">
+                    </div>
+                    <!-- <div class="card-action">
+                        <a href="#">This is a link</a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signout Modal -->
+    <div id="signoutModal" class="modal">
+        <!-- <div class="row"> -->
+        <div class="col s12 m6">
+            <div class="card">
+                <div class="card-image">
+                    <img src="./assets/images/thankyou.jpg">
+                </div>
+                <div class="card-content">
+                    <p>Thank You for using our services, please visit us again.</p>
+                </div>
+                <div class="card-action center-align">
+                    <a class="waves-effect waves-light btn" href="index.html">Close
+                        <i class="material-icons right">close</i></a>
+                </div>
+            </div>
+            <!-- </div> -->
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+    <script src="./assets/javascript/app.js"></script>
+</body>
