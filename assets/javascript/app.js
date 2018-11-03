@@ -62,19 +62,17 @@ $('#btnSignup').on('click', () => {
     if (validationPassed && passwordsMatch) {
         console.log("validation passed and passwords match");
         auth.createUserWithEmailAndPassword(email, password)
-            .then(function (user) {
-                console.log(user.uid);
-                db_users.child(user.uid).set({
+            .then((savedUser) => {
+                db_users.child(savedUser.user.uid).set({
                     "displayName": firstName + " " + lastName,
                     "email": email,
                     "password": password
                 });
 
-                $("#messageToUser").text(`${userName}, thanks for signing up!`);
+                // $("#messageToUser").text(`${userName}, thanks for signing up!`);
 
                 setTimeout(function () {
                     window.location.replace("welcomepage.html");
-
                 }, 2000);
                 //TODO: Alert User that we have successfully created the user account and redirect him to home.html
             })
@@ -86,14 +84,13 @@ $('#btnSignup').on('click', () => {
     }
 });
 
-$('#btnSignup').on('click', () => {
+$('#btnSignIn').on('click', () => {
     let email = $('#loginUser').val().trim();
     let password = $('#loginPassword').val().trim();
     firebase.auth().signInWithEmailAndPassword(email, password)
         .then(function (firebaseUser) {
             console.log(firebaseUser.user.email);
             console.log(firebaseUser.user.uid);
-            console.log(firebaseUser.user.displayName);
 
             $('#messageToUser').text("Successful login" + auth.currentUser);
             setTimeout(function () {
@@ -104,17 +101,7 @@ $('#btnSignup').on('click', () => {
         .catch(function (error) {
             console.log("Sigin Error:" + error.message)
         });
-
-    auth.onAuthStateChanged(function (user) {
-        if (user) {
-            // User is signed in.
-            console.log("user signed in" + user);
-        } else {
-            // No user is signed in.
-        }
-    });
 });
-
 /****************************************************************************
  ****************************************************************************
     Input Validation
