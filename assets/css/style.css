@@ -152,3 +152,29 @@ input[type=submit]:active {
     max-height: 100%;
     overflow: visible
 }
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+/* #sticker {
+    color: white;
+    width: 300px;
+    font-family: Droid Sans;
+    font-size: 40px;
+    line-height: 1.6em;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+    border-radius: 50px;
+    float: right;
+} */

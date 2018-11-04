@@ -17,10 +17,14 @@ $(document).ready(function () {
     const db_books = firebase.database().ref("books");
     const auth = firebase.auth();
 
-    $('.modal').modal();
-    init();
-
-    function init() {
+    initApp();
+    /****************************************************************************
+     ****************************************************************************
+        Initialize App Procedure 
+    *****************************************************************************
+    *****************************************************************************/
+    function initApp() {
+        $('.modal').modal();
         auth.onAuthStateChanged(function (user) {
             if (user) {
                 // User is signed in.
@@ -38,6 +42,39 @@ $(document).ready(function () {
         });
     }
 
+
+
+    /****************************************************************************
+     ****************************************************************************
+        User SignIn/SignUp Functionality
+    *****************************************************************************
+    *****************************************************************************/
+
+    $('#btnModalQuote').on('click', () => {
+        // let queryURL = "http://quotes.rest/qod.json?category=management";
+        let queryURL = "http://quotes.rest/qod/categories.json";
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            console.log(response.contents.categories);
+            // console.log(response.contents.quotes[0]);
+        });
+    });
+
+    $('#btnSignIn').on('click', () => {
+        let email = $('#loginUser').val().trim();
+        let password = $('#loginPassword').val().trim();
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(() => {
+                setTimeout(function () {
+                    window.location.replace("home.html");
+                }, 100);
+            }).catch((error) => {
+                console.log("Sigin Error:" + error.message)
+            });
+    });
+
     $('#btnRegister').on('click', () => {
         let firstName = $('#first_name').val().trim();
         let lastName = $('#last_name').val().trim();
@@ -46,8 +83,8 @@ $(document).ready(function () {
         let password = $('#password').val().trim();
         let confirmPassword = $('#chkpwd').val().trim();
 
-        console.log(firstName);
-        console.log(lastName);
+        // console.log(firstName);
+        // console.log(lastName);
 
         let validationPassed = true;
         let passwordsMatch = true;
@@ -95,37 +132,10 @@ $(document).ready(function () {
                         window.location.replace("home.html");
                     }, 100);
                 })
-                .catch(
-                    e => {
-                        console.log("Error:" + e.message)
-                    }
-                );
+                .catch(error => {
+                    console.log("Error:" + error.message)
+                });
         }
-    });
-
-    $('#btnCancel').on('click', () => {
-        $('#signUpModal').modal('close');
-    });
-
-    $('#btnSignIn').on('click', () => {
-        let email = $('#loginUser').val().trim();
-        let password = $('#loginPassword').val().trim();
-        firebase.auth().signInWithEmailAndPassword(email, password)
-            .then((firebaseUser) => {
-                // console.log(firebaseUser.user.email);
-                // console.log(firebaseUser.user.uid);
-                var userID = firebaseUser.user.uid;
-                // firebase.database().ref('/users/' + userID).once('value').then(function (snapshot) {
-                //     username = (snapshot.val() && snapshot.val().displayName) || 'Anonymous';
-                //     console.log("Page refreshed: " + username);
-                // });
-
-                setTimeout(function () {
-                    window.location.replace("home.html");
-                }, 100);
-            }).catch((err) => {
-                console.log("Sigin Error:" + error.message)
-            });
     });
 
     $("#logout").on('click', () => {
@@ -133,9 +143,18 @@ $(document).ready(function () {
             console.log('Signed Out');
             $('#signoutModal').modal('open');
         }, function (error) {
-            console.error('Sign Out Error', error);
+            console.error('Sign Out Error', error.message);
         });
-    })
+    });
+
+    $('#btnCancel').on('click', () => {
+        $('#signUpModal').modal('close');
+    });
+
+    $('#btnQuoteModalClose').on('click', () => {
+        $('#quoteModal').modal('close');
+    });
+
     /****************************************************************************
      ****************************************************************************
         Input Validation
