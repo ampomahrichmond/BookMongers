@@ -25,6 +25,7 @@ $(document).ready(function () {
     *****************************************************************************/
     function initApp() {
         $('.modal').modal();
+        $('.parallax').parallax();
         auth.onAuthStateChanged(function (user) {
             if (user) {
                 // User is signed in.
