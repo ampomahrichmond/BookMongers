@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+        /* embed CSS */
+    </style>
+    </div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Owned Books</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">#BooKMongers</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a class="waves-effect waves-light btn" href="home.html">Home</a></li>
+                <li><a class="waves-effect waves-light btn" href="about.html">Team</a></li>
+                <li><a class="waves-effect waves-light btn" href="owned.html">Owned</a></li>
+                <li><a class="waves-effect waves-light btn" href="search.html">Search</a></li>
+                <li><a class="waves-effect waves-light btn modal-trigger" href="#signUpModal" id="logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col s12 m4 l2"></div>
+        <div class="col s12 m4 l2"></div>
+        <div class="col s12 m4 18">
+            <div class="card-panel teal">
+                <span class="white-text">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Author</th>
+                                <th>ISBN</th>
+                                <th>Purchased From</th>
+                                <th>Type of Book</th>
+                            </tr>
+                        </thead>
+                        <!-- not sure how to have this table update dynamically -->
+                        <tbody>
+                            <tr>
+                                <td>Harry Potter</td>
+                                <td>J.K.Rowling</td>
+                                <td>123456</td>
+                                <td>Amazon</td>
+                                <td>Audio</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </span>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+    <script src="./assets/javascript/app.js"></script>
+
+</body>
+
+</html>
