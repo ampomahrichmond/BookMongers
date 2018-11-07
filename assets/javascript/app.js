@@ -18,12 +18,12 @@ $(document).ready(function () {
     const db_books = firebase.database().ref("books");
     const auth = firebase.auth();
 
-    let quoteCategories = ["art", "funny", "inspire", "life", "love", "management", "sports", "students"];
+    var quoteCategories = ["art", "funny", "inspire", "life", "love", "management", "sports", "students"];
+    var userToken = '';
 
     initApp();
-    var userToken = '';
     /****************************************************************************
-     ****************************************************************************
+    ****************************************************************************
         Initialize App Procedure 
     *****************************************************************************
     *****************************************************************************/
@@ -47,32 +47,31 @@ $(document).ready(function () {
         });
     }
 
-
-
     /****************************************************************************
-     ****************************************************************************
-        User SignIn/SignUp Functionality
+    ****************************************************************************
+        Generate a random quote everytime user clicks on the button
     *****************************************************************************
     *****************************************************************************/
-
     $('#btnModalQuote').on('click', () => {
-        // let queryURL = "http://quotes.rest/qod.json?category=management";
-        let queryURL = "http://quotes.rest/qod/categories.json";
+        //Generate a random quote category
+        let category = quoteCategories[Math.floor(Math.random() * quoteCategories.length)];
+        let queryURL = "http://quotes.rest/qod.json?category=" + category;
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            console.log(response.contents.categories);
-            let categories = response.contents.categories;
-            console.log(categories);
-            categories.forEach((value, index) => {
-                console.log(value);
-            })
-            $('#quote').text(response.contents.categories)
-            // console.log(response.contents.quotes[0]);
+            let quote = response.contents.quotes[0].quote;
+            let author = response.contents.quotes[0].author;
+            $('#quote').html(`<h4>${quote}</h4>`);
+            $('#author').html(`<h5>- ${author}</h5>`)
         });
     });
 
+    /****************************************************************************
+    ****************************************************************************
+        User SignIn/SignUp Functionality
+    *****************************************************************************
+    *****************************************************************************/
     $('#btnSignIn').on('click', () => {
         let email = $('#loginUser').val().trim();
         let password = $('#loginPassword').val().trim();
@@ -94,8 +93,6 @@ $(document).ready(function () {
         let password = $('#password').val().trim();
         let confirmPassword = $('#chkpwd').val().trim();
 
-        // console.log(firstName);
-        // console.log(lastName);
         let passwordsMatch = true;
         if (password != confirmPassword) {
             //TODO: Notify the user that passowrd format has not been entered
@@ -140,7 +137,7 @@ $(document).ready(function () {
     });
 
     /****************************************************************************
-     ****************************************************************************
+    ****************************************************************************
         Input Validation
     *****************************************************************************
     *****************************************************************************/
