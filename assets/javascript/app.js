@@ -163,8 +163,37 @@ $(document).ready(function () {
        Search 
     *****************************************************************************
     *****************************************************************************/
+
+    var apiKey = "&api_key=AIzaSyAEoZnDs6l4qoPHa6jFkYCfl1ukpV5Wowk";
+
     $('#btnSearch').on('click', () => {
         let searchTerm = $('#txtSearch').val().trim();
+        let queryURL = "https://www.googleapis.com/books/v1/volumes?q=" + searchTerm + apiKey;
+        let url = '';
+        let img = '';
+        let title = '';
+        let author = '';
+        // Creating an AJAX call 
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then((response) => {
+            console.log(response);
+            var results = response.data.items.length;
+
+            for (i = 0; i < response.items.length; i++) {
+                console.log(response.items[i]);
+                //get title of the book
+                title = $('<h5 class = "center-align black-text">' + response.items[i].volumeInfo.title + '</h5>');
+                author = $('<h5 class = "center-align black-text"> By:' + response.items[i].volumeInfo.authors + '</h5>');
+                img = $('img class = "image" id= "bookImage"> <br> <a href=' + response.items[i].volumeInfo.infoLink + '><button id="imagebutton" class=""> Read More</button></a>');
+                url = response.item[i].volumeInfo.imageLinks.thumbnail;
+                img.attr('src', url); //attach the image url 
+                title.appendTo("#result");
+                author.appendTo("#result");
+                img.appendTo("#result");
+            }
+        });
 
     });
 
