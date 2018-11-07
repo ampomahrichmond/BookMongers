@@ -69,13 +69,15 @@
         <div class="row">
           <div class="input-field hoverable col s6">
             <i class="material-icons prefix">contacts</i>
-            <input id="first_name" type="text" class="validate">
+            <input id="first_name" type="text" class="validate" pattern="^[a-zA-Z]+$">
             <label for="first_name">First Name</label>
+            <span class="helper-text" data-error="First Name should be all alphabets" data-success=""></span>
           </div>
           <div class="input-field hoverable col s6">
             <i class="material-icons prefix">contacts</i>
-            <input id="last_name" type="text" class="validate">
+            <input id="last_name" type="text" class="validate" pattern="^[a-zA-Z]+$">
             <label for="last_name">Last Name</label>
+            <span class="helper-text" data-error="Last Name should be all alphabets" data-success=""></span>
           </div>
         </div>
         <div class="row">
@@ -86,22 +88,27 @@
         </div> -->
           <div class="input-field hoverable col s12">
             <i class="material-icons prefix">email</i>
-            <input id="email" type="email" class="validate">
+            <input id="email" type="email" class="validate" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$">
             <label for="email">Email</label>
+            <span class="helper-text" data-error="Email should be of the form xxx@xxx.xx" data-success=""></span>
           </div>
         </div>
         <div class="row">
           <div class="input-field hoverable col s12">
             <i class="material-icons prefix">vpn_key</i>
-            <input id="password" type="password" class="validate">
+            <input id="password" type="password" class="validate" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}$">
             <label for="password">Password</label>
+            <span class="helper-text" data-error="Password must have atleast one capital letter and one number and min length of 6"
+              data-success="right"></span>
           </div>
         </div>
         <div class="row">
           <div class="input-field hoverable col s12">
             <i class="material-icons prefix">replay</i>
-            <input id="chkpwd" type="password" class="validate">
+            <input id="chkpwd" type="password" class="validate" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}$">
             <label for="chkpwd">Retype Password</label>
+            <span class="helper-text" data-error="Password must have atleast one capital letter and one number and min length of 6"
+              data-success="right">Must match with Password</span>
           </div>
         </div>
         <div class="row center-align">

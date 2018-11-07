@@ -5,19 +5,23 @@ $(document).ready(function () {
     *****************************************************************************
     *****************************************************************************/
     var config = {
-        apiKey: "AIzaSyC9vAXjOwVWdpAhJbYBB2njf_AhpvJ63wg",
-        authDomain: "bookmongers-221023.firebaseapp.com",
-        databaseURL: "https://bookmongers-221023.firebaseio.com",
-        projectId: "bookmongers-221023",
-        storageBucket: "bookmongers-221023.appspot.com",
-        messagingSenderId: "654412021314"
+        apiKey: "AIzaSyD17fnAlr9kMX8ULA7jiclC1h5Ua_HQD3A",
+        authDomain: "bookmongers-631d6.firebaseapp.com",
+        databaseURL: "https://bookmongers-631d6.firebaseio.com",
+        projectId: "bookmongers-631d6",
+        storageBucket: "",
+        messagingSenderId: "298235970222"
     };
+
     firebase.initializeApp(config);
     const db_users = firebase.database().ref("users");
     const db_books = firebase.database().ref("books");
     const auth = firebase.auth();
 
+    let quoteCategories = ["art", "funny", "inspire", "life", "love", "management", "sports", "students"];
+
     initApp();
+    var userToken = '';
     /****************************************************************************
      ****************************************************************************
         Initialize App Procedure 
@@ -30,8 +34,8 @@ $(document).ready(function () {
             if (user) {
                 // User is signed in.
                 console.log(user);
-                let userID = user.uid;
-                firebase.database().ref('/users/' + userID).once('value').then(function (snapshot) {
+                userToken = user.uid;
+                firebase.database().ref('/users/' + userToken).once('value').then(function (snapshot) {
                     username = (snapshot.val() && snapshot.val().displayName) || 'Anonymous';
                     console.log("Page refreshed: " + username);
                     $('#welcomeMessage').html("<h1>Welcome " + username + "</h1>");
@@ -59,6 +63,12 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (response) {
             console.log(response.contents.categories);
+            let categories = response.contents.categories;
+            console.log(categories);
+            categories.forEach((value, index) => {
+                console.log(value);
+            })
+            $('#quote').text(response.contents.categories)
             // console.log(response.contents.quotes[0]);
         });
     });
@@ -86,41 +96,14 @@ $(document).ready(function () {
 
         // console.log(firstName);
         // console.log(lastName);
-
-        let validationPassed = true;
         let passwordsMatch = true;
-        if (!checkName(firstName)) {
-            //TODO: Notify the user that the first name can only be alphabets
-            validationPassed = false;
-        }
-
-
-        if (!checkName(lastName)) {
-            //TODO: Notify the user that the last name can only be alphabets
-            validationPassed = false;
-        }
-
-        if (!checkEmail(email)) {
-            //TODO: Notify the user that a valid email has not been entered
-            validationPassed = false;
-        }
-
-        if (!CheckPassword(password)) {
-            //TODO: Notify the user that passowrd format has not been entered
-            validationPassed = false;
-        }
-
-        if (!CheckPassword(confirmPassword)) {
-            //TODO: Notify the user that passowrd format has not been entered
-            validationPassed = false;
-        }
         if (password != confirmPassword) {
             //TODO: Notify the user that passowrd format has not been entered
             passwordsMatch = false;
         }
 
-        if (validationPassed && passwordsMatch) {
-            console.log("validation passed and passwords match");
+        if (passwordsMatch) {
+            console.log("Passwords match");
             auth.createUserWithEmailAndPassword(email, password)
                 .then((savedUser) => {
                     db_users.child(savedUser.user.uid).set({
