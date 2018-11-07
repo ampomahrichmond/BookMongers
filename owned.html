@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Owned Books</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+    <div class="fixed-action-btn direction-top" style="bottom: 45px; right: 24px;" id="sticketDiv">
+        <a class="btn-floating btn-large blue modal-trigger" href="#quoteModal" id="btnModalQuote" title="Do you want to read a famous quote???">
+            <i class="material-icons">spa</i>
+        </a>
+    </div>
+
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">#BooKMongers</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a class="waves-effect waves-light btn" href="home.html">Home</a></li>
+                <li><a class="waves-effect waves-light btn" href="about.html">Team</a></li>
+                <li><a class="waves-effect waves-light btn" href="owned.html">Owned</a></li>
+                <li><a class="waves-effect waves-light btn" href="search.html">Search</a></li>
+                <li><a class="waves-effect waves-light btn modal-trigger" href="#signUpModal" id="logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col s12 m4 l2"></div>
+        <div class="col s12 m4 l2"></div>
+        <div class="col s12 m4 18">
+            <div class="card-panel teal">
+                <span class="white-text">
+                    <table>
+                        <thead>
+                            <tr>
+
+                                <th>Name</th>
+                                <th>Author</th>
+                                <th>ISBN</th>
+                                <th>Purchased From</th>
+                                <th>Type of Book</th>
+                            </tr>
+                        </thead>
+                        <!-- not sure how to have this table update dynamically -->
+                        <tbody>
+                            <tr>
+                                <td>Harry Potter</td>
+                                <td>J.K.Rowling</td>
+                                <td>123456</td>
+                                <td>Amazon</td>
+                                <td>Audio</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </span>
+            </div>
+        </div>
+    </div>
+    <!-- Query Modal -->
+    <div id="quoteModal" class="modal">
+        <!-- <div class="row"> -->
+        <div class="col s12 m6">
+            <div class="card">
+                <div class="parallax-container">
+                    <div class="parallax">
+                        <img src="./assets/images/quotebackground.jpg">
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col s12 center">
+                                <h1><b>QUOTE</b></h1>
+                                <h4>"Don’t be trapped by dogma –
+                                    which is living with the results of other people’s thinking. <br />
+                                    Don’t let the noise of other’s opinions drown out your own inner voice."
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-action center-align">
+                    <a class="waves-effect waves-light btn" id="btnQuoteModalClose" href="#">Close
+                        <i class="material-icons right">close</i></a>
+                </div>
+            </div>
+            <!-- </div> -->
+        </div>
+    </div>
+
+    <!-- Signout Modal -->
+    <div id="signoutModal" class="modal">
+        <div class="col s12 m6">
+            <div class="card">
+                <div class="card-image">
+                    <img src="./assets/images/thankyou.jpg">
+                </div>
+                <div class="card-content">
+                    <p>Thank You for using our services, please visit us again.</p>
+                </div>
+                <div class="card-action center-align">
+                    <a class="waves-effect waves-light btn" href="index.html">Close
+                        <i class="material-icons right">close</i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+    <script src="./assets/javascript/app.js"></script>
+
+</body>
+
+</html>

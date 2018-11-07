@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>The Team</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">#BooKMongers</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a class="waves-effect waves-light btn" href="home.html">Home</a></li>
+                <li><a class="waves-effect waves-light btn" href="about.html">Team</a></li>
+                <li><a class="waves-effect waves-light btn" href="owned.html">Owned</a></li>
+                <li><a class="waves-effect waves-light btn" href="search.html">Search</a></li>
+                <li><a class="waves-effect waves-light btn modal-trigger" href="#signUpModal" id="logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="fixed-action-btn direction-top" style="bottom: 45px; right: 24px;" id="sticketDiv">
+        <a class="btn-floating btn-large blue modal-trigger" href="#quoteModal" id="btnModalQuote" title="Do you want to read a famous quote???">
+            <i class="material-icons">spa</i>
+        </a>
+    </div>
+
+    <div id="team">
+        <div class="hero hero-other">
+            <div class="container-wide">
+                <div class="row">
+                    <div class="col s12">
+                        <h1>Our Team</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-wide team-members">
+            <div class="row">
+                <div class="col m6">
+                    <div class="person"><img src="./assets/images/team/swaroop.jpg" alt="Swaroop Kondreddy" class="avatar circle">
+                        <h2>Swaroop Kondreddy</h2>
+                        <div class="team-position">Project Lead & Full Stack Developer</div>
+                        <div class="team-description"></div>
+                    </div>
+                </div>
+                <div class="col m6">
+                    <div class="person"><img src="./assets/images/team/nafisa.jpg" alt="Nafisa Soeltan" class="avatar circle">
+                        <h2>Nafisa Soeltan</h2>
+                        <div class="team-position">Full Stack Developer</div>
+                        <div class="team-description"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col m6">
+                    <div class="person"><img src="/img/team/benas.jpg" alt="Bradan Tinstman" class="avatar circle">
+                        <h2>Bradan Tinstman</h2>
+                        <div class="team-position">Full Stack Developer</div>
+                        <div class="team-description"></div>
+                    </div>
+                </div>
+                <div class="col m6">
+                    <div class="person"><img src="./assets/images/team/richmond.jpg" alt="Richmond Ampomah" class="avatar circle">
+                        <h2>Richmond Ampomah</h2>
+                        <div class="team-position">Full Stack Developer</div>
+                        <div class="team-description"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Query Modal -->
+    <div id="quoteModal" class="modal">
+        <!-- <div class="row"> -->
+        <div class="col s12 m6">
+            <div class="card">
+                <div class="parallax-container">
+                    <div class="parallax">
+                        <img src="./assets/images/quotebackground.jpg">
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col s12 center">
+                                <h1><b>QUOTE</b></h1>
+                                <h4>"Don’t be trapped by dogma –
+                                    which is living with the results of other people’s thinking. <br />
+                                    Don’t let the noise of other’s opinions drown out your own inner voice."
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-action center-align">
+                    <a class="waves-effect waves-light btn" id="btnQuoteModalClose" href="#">Close
+                        <i class="material-icons right">close</i></a>
+                </div>
+            </div>
+            <!-- </div> -->
+        </div>
+    </div>
+
+    <!-- Signout Modal -->
+    <div id="signoutModal" class="modal">
+        <div class="col s12 m6">
+            <div class="card">
+                <div class="card-image">
+                    <img src="./assets/images/thankyou.jpg">
+                </div>
+                <div class="card-content">
+                    <p>Thank You for using our services, please visit us again.</p>
+                </div>
+                <div class="card-action center-align">
+                    <a class="waves-effect waves-light btn" href="index.html">Close
+                        <i class="material-icons right">close</i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+    <script src="./assets/javascript/app.js"></script>
+</body>
+
+</html>
