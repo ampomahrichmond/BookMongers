@@ -25,17 +25,24 @@
       <div class="col s12 m4 l2"></div>
       <div class="col s12 m4 l2"></div>
       <div class="col s12 m4 18">
-        <div class="card #fff3e0 orange lighten-5">
+        <div class="card orange lighten-5">
           <div class="card-content black-text">
             <span class="card-title">
               <h2 class="center-align">#BookMongers</h2>
             </span>
             <p class="center-align">Welcome To Your Favorite BookShop Collections</p>
             <div class="card-content black-text">
-              <label for="username">Email:</label>
-              <input type="text" id="loginUser" name="username">
-              <label for="password">Password:</label>
-              <input type="password" id="loginPassword" name="password">
+              <div class="row">
+                <label for="username">Email:</label>
+                <input type="email" id="loginUser" name="username" class="validate" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$">
+                <span class="helper-text" data-error="Email should be of the form xxx@xxx.xx" data-success=""></span>
+              </div>
+              <div class="row">
+                <label for="password">Password:</label>
+                <input type="password" id="loginPassword" name="password" class="validate" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}$">
+                <span class="helper-text" data-error="Password must have atleast one capital letter and one number and min length of 6"
+                  data-success=""></span>
+              </div>
             </div>
             <div id="lower">
               <!-- <label>
@@ -99,7 +106,7 @@
             <input id="password" type="password" class="validate" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}$">
             <label for="password">Password</label>
             <span class="helper-text" data-error="Password must have atleast one capital letter and one number and min length of 6"
-              data-success="right"></span>
+              data-success=""></span>
           </div>
         </div>
         <div class="row">
@@ -108,7 +115,7 @@
             <input id="chkpwd" type="password" class="validate" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}$">
             <label for="chkpwd">Retype Password</label>
             <span class="helper-text" data-error="Password must have atleast one capital letter and one number and min length of 6"
-              data-success="right">Must match with Password</span>
+              data-success="">Must match with Password</span>
           </div>
         </div>
         <div class="row center-align">

@@ -18,12 +18,12 @@ $(document).ready(function () {
     const db_books = firebase.database().ref("books");
     const auth = firebase.auth();
 
-    let quoteCategories = ["art", "funny", "inspire", "life", "love", "management", "sports", "students"];
+    var quoteCategories = ["art", "funny", "inspire", "life", "love", "management", "sports", "students"];
+    var userToken = '';
 
     initApp();
-    var userToken = '';
     /****************************************************************************
-     ****************************************************************************
+    *****************************************************************************
         Initialize App Procedure 
     *****************************************************************************
     *****************************************************************************/
@@ -47,32 +47,31 @@ $(document).ready(function () {
         });
     }
 
-
-
     /****************************************************************************
-     ****************************************************************************
-        User SignIn/SignUp Functionality
+    *****************************************************************************
+        Generate a random quote everytime user clicks on the button
     *****************************************************************************
     *****************************************************************************/
-
     $('#btnModalQuote').on('click', () => {
-        // let queryURL = "http://quotes.rest/qod.json?category=management";
-        let queryURL = "http://quotes.rest/qod/categories.json";
+        //Generate a random quote category
+        let category = quoteCategories[Math.floor(Math.random() * quoteCategories.length)];
+        let queryURL = "http://quotes.rest/qod.json?category=" + category;
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            console.log(response.contents.categories);
-            let categories = response.contents.categories;
-            console.log(categories);
-            categories.forEach((value, index) => {
-                console.log(value);
-            })
-            $('#quote').text(response.contents.categories)
-            // console.log(response.contents.quotes[0]);
+            let quote = response.contents.quotes[0].quote;
+            let author = response.contents.quotes[0].author;
+            $('#quote').html(`<h4>${quote}</h4>`);
+            $('#author').html(`<h5>- ${author}</h5>`)
         });
     });
 
+    /****************************************************************************
+    *****************************************************************************
+        User SignIn/SignUp Functionality
+    *****************************************************************************
+    *****************************************************************************/
     $('#btnSignIn').on('click', () => {
         let email = $('#loginUser').val().trim();
         let password = $('#loginPassword').val().trim();
@@ -94,8 +93,6 @@ $(document).ready(function () {
         let password = $('#password').val().trim();
         let confirmPassword = $('#chkpwd').val().trim();
 
-        // console.log(firstName);
-        // console.log(lastName);
         let passwordsMatch = true;
         if (password != confirmPassword) {
             //TODO: Notify the user that passowrd format has not been entered
@@ -140,7 +137,72 @@ $(document).ready(function () {
     });
 
     /****************************************************************************
-     ****************************************************************************
+    *****************************************************************************
+        add book entries to Firebase 
+    *****************************************************************************
+    *****************************************************************************/
+    // $(document).on("click", ".owned", function () {
+    //     //here add your code to create a firebase entry
+    //     let bookEntry1 = {
+    //         "author": "swaroop",
+    //         "title": "this is a test",
+    //     }
+
+    //     let bookEntry2 = {
+    //         "author": "swaroop1",
+    //         "title": "this is a test1",
+    //     }
+
+    //     db_books.child("A38Cat12FvcawCAj2eSNU2EOK543").push(bookEntry1);
+    //     db_books.child("A38Cat12FvcawCAj2eSNU2EOK543").push(bookEntry2);
+
+    // });
+
+    /****************************************************************************
+    *****************************************************************************
+       Search 
+    *****************************************************************************
+    *****************************************************************************/
+
+    var apiKey = "&api_key=AIzaSyAEoZnDs6l4qoPHa6jFkYCfl1ukpV5Wowk";
+
+    $('#btnSearch').on('click', () => {
+        let searchTerm = $('#txtSearch').val().trim();
+        let queryURL = "https://www.googleapis.com/books/v1/volumes?q=" + searchTerm + apiKey;
+        let url = '';
+        let img = '';
+        let title = '';
+        let author = '';
+        // Creating an AJAX call 
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then((response) => {
+            console.log(response);
+            var results = response.data.items.length;
+
+            for (i = 0; i < response.items.length; i++) {
+                console.log(response.items[i]);
+                //get title of the book
+                title = $('<h5 class = "center-align black-text">' + response.items[i].volumeInfo.title + '</h5>');
+                author = $('<h5 class = "center-align black-text"> By:' + response.items[i].volumeInfo.authors + '</h5>');
+                img = $('img class = "image" id= "bookImage"> <br> <a href=' + response.items[i].volumeInfo.infoLink + '><button id="imagebutton" class=""> Read More</button></a>');
+                url = response.item[i].volumeInfo.imageLinks.thumbnail;
+                img.attr('src', url); //attach the image url 
+                title.appendTo("#result");
+                author.appendTo("#result");
+                img.appendTo("#result");
+            }
+        });
+
+    });
+
+    $('#btnReset').on('click', () => {
+        $('#txtSearch').text('');
+    })
+
+    /****************************************************************************
+    *****************************************************************************
         Input Validation
     *****************************************************************************
     *****************************************************************************/

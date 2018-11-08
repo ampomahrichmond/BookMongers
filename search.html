@@ -2,6 +2,7 @@
 <html>
 
 <head>
+<<<<<<< HEAD
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
@@ -21,7 +22,7 @@
 
 <body>
     <div class="container" id="homePage">
-        <nav>
+        <nav class="#ff9800 orange">
             <div class="nav-wrapper">
                 <a href="#" class="brand-logo">#BooKMongers</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -56,3 +57,120 @@
      </div>
  </body>
  </html> 
+=======
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Search Books</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+    <div class="fixed-action-btn direction-top" style="bottom: 45px; right: 24px;" id="sticketDiv">
+        <a class="btn-floating btn-large blue modal-trigger" href="#quoteModal" id="btnModalQuote" title="Do you want to read a famous quote???">
+            <i class="material-icons">spa</i>
+        </a>
+    </div>
+
+    <nav class="#ff9800 orange">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">#BooKMongers</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a class="waves-effect waves-light btn" href="home.html">Home</a></li>
+                <li><a class="waves-effect waves-light btn" href="about.html">Team</a></li>
+                <li><a class="waves-effect waves-light btn" href="owned.html">Owned</a></li>
+                <li><a class="waves-effect waves-light btn" href="search.html">Search</a></li>
+                <li><a class="waves-effect waves-light btn modal-trigger" href="#signUpModal" id="logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container" id="searchPage">
+        <div class="row">
+            <div class="card col s12">
+                <div class="card-content">
+                    <span class="card-title">Search Books</span>
+                    <!-- <form class="col s12"> -->
+                    <div class="row">
+                        <div class="input-field hoverable col s12">
+                            <i class="material-icons prefix">search</i>
+                            <input id="txtSearch" type="text">
+                            <label for="txtSearch">Search for books by Title/Author</label>
+                        </div>
+                    </div>
+                    <!-- </form> -->
+                    <div class="card-action center-align">
+                        <button class="btn waves-effect waves-light" type="submit" name="action" id="btnSearcg">Search
+                            <i class="material-icons right">location_searching</i>
+                        </button>
+
+                        <button class="btn waves-effect waves-light" type="submit" name="action" id="btnReset">Reset
+                            <i class="material-icons right">clear_all</i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="searchResults"></div>
+        </div>
+    </div>
+
+    <!-- Query Modal -->
+    <div id="quoteModal" class="modal">
+        <div class="col s12 m6">
+            <div class="card">
+                <div class="parallax-container">
+                    <div class="parallax">
+                        <img src="./assets/images/quotebackground.jpg">
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col s12 center">
+                                <h1><b>QUOTE</b></h1>
+                                <div id="quote"></div>
+                                <div id="author"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-action center-align">
+                    <a class="waves-effect waves-light btn" id="btnQuoteModalClose" href="#">Close
+                        <i class="material-icons right">close</i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signout Modal -->
+    <div id="signoutModal" class="modal">
+        <div class="col s12 m6">
+            <div class="card">
+                <div class="card-image">
+                    <img src="./assets/images/thankyou.jpg">
+                </div>
+                <div class="card-content center-align">
+                    <p>Thank You for using our services, please visit us again.</p>
+                </div>
+                <div class="card-action center-align">
+                    <a class="waves-effect waves-light btn" href="index.html">Close
+                        <i class="material-icons right">close</i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+    <script src="./assets/javascript/app.js"></script>
+</body>
+
+</html>
+>>>>>>> 829fe723a014b03e02b35ebefd33f6fb7c5b1083
+
