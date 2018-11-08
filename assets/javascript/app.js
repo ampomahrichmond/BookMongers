@@ -157,7 +157,64 @@ $(document).ready(function () {
     //     db_books.child("A38Cat12FvcawCAj2eSNU2EOK543").push(bookEntry2);
 
     // });
+    // Button to add books
+    $("#add-book-btn").on("click", function (event) {
+        event.preventDefault();
 
+        // Grabs user input
+        var bookName = $("#book-name-input").val().trim();
+        var author = $("#author-input").val().trim();
+        var isbn = $("#isbn-input").val().trim();
+
+
+        // Creates local "temporary" object for holding train data
+        var newBook = {
+            name: bookName,
+            author: author,
+            isbn: isbn,
+        };
+
+        // Uploads book data to the database
+        db_books.child().push(newBook);
+
+
+        // Alert
+        alert("Book successfully added");
+
+        // Clears all of the text-boxes
+        $("#book-name-input").val("");
+        $("#auhtor-input").val("");
+        $("#isbnn-input").val("");
+    });
+
+    $(document).on("click", ".owned", function () {
+        //here add your code to create a firebase entry
+
+        console.log(childSnapshot.val());
+
+        // Store everything into a variable.
+        var bookName = childSnapshot.val().title;
+        var author = childSnapshot.val().author;
+        var isbn = childSnapshot.val().isbn;
+
+        // Add each book's data into the table
+        $("#book-table > tbody").append("<tr><td>" + bookName + "</td><td>" + author + "</td><td>" + isbn +
+            "</td><td>");
+
+        // let bookEntry1 = {
+        //     "author": "swaroop",
+        //     "title": "this is a test",
+        // }
+
+        // let bookEntry2 = {
+        //     "author": "swaroop1",
+        //     "title": "this is a test1",
+        // }
+
+        // db_books.child("A38Cat12FvcawCAj2eSNU2EOK543").push(bookEntry1);
+        // db_books.child("A38Cat12FvcawCAj2eSNU2EOK543").push(bookEntry2);
+
+    });
     /****************************************************************************
     *****************************************************************************
        Search 
