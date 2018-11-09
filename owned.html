@@ -34,38 +34,58 @@
         </div>
     </nav>
 
-    <div class="row">
-        <div class="col s12 m4 l2"></div>
-        <!-- <div class="col s12 m4 l2"></div> -->
-        <div class="col s12 m4 18">
-            <div class="card-panel teal">
-                <span class="white-text">
-                    <table>
-                        <thead>
-                            <tr>
+     <!-- owned books -->
+	<div class="container">
 
-                                <th>Name</th>
-                                <th>Author</th>
-                                <th>ISBN</th>
-                                <th>Purchased From</th>
-                                <th>Type of Book</th>
-                            </tr>
-                        </thead>
-                        <!-- not sure how to have this table update dynamically -->
-                        <tbody>
-                            <tr>
-                                <td>Harry Potter</td>
-                                <td>J.K.Rowling</td>
-                                <td>123456</td>
-                                <td>Amazon</td>
-                                <td>Audio</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </span>
-            </div>
-        </div>
-    </div>
+
+	    <div class="col-lg-12">
+
+			  <!-- owned books-->
+		    <div class="panel panel-success">
+		      <div class="panel-heading">
+		        <h3 class="panel-title"><strong>Owned Books</strong></h3>
+		      </div>
+		      <div class="panel-body">
+		        <table class="table table-hover" id='owned-table'>
+		          <thead>
+		            <tr>
+		              <th>Title</th>
+		              <th>Author</th>
+		              <th>ISBN</th>
+		            </tr>
+		          </thead>
+		          <tbody>
+		          </tbody>
+		        </table>
+		      </div>
+			</div>
+
+			<!-- Add book  -->
+	    <div class="panel panel-success">
+	      <div class="panel-heading">
+	        <h3 class="panel-title"><strong>Add Book</strong></h3>
+	      </div>
+	      <div class="panel-body">
+
+	        <!-- Entry Form -->
+	        <form>
+	          <div class="form-group">
+	            <label for="book-name-input">Book Name</label>
+	            <input class="form-control" id="book-name-input" type="text">
+	          </div>
+	          <div class="form-group">
+	            <label for="author-input">Author</label>
+	            <input class="form-control" id="author-input" type="text">
+	          </div>
+	          <div class="form-group">
+	            <label for="isbn-input">ISBN</label>
+	            <input class="form-control" id="isbn-input" type="text">
+	          </div>
+	          <button class="btn btn-success" id="add-book-btn" type="submit">Submit</button>
+	        </form>
+	      </div>
+	    </div>
+	</div>
     <!-- Query Modal -->
     <div id="quoteModal" class="modal">
         <!-- <div class="row"> -->
