@@ -19,7 +19,8 @@ $(document).ready(function () {
     const auth = firebase.auth();
 
     var quoteCategories = ["art", "funny", "inspire", "life", "love", "management", "sports", "students"];
-    var userToken = '';
+    var userToken = " ";
+
 
     initApp();
     /****************************************************************************
@@ -39,6 +40,27 @@ $(document).ready(function () {
                     username = (snapshot.val() && snapshot.val().displayName) || 'Anonymous';
                     console.log("Page refreshed: " + username);
                     $('#welcomeMessage').html("<h1>Welcome " + username + "</h1>");
+                });
+                db_books.child(userToken).on("child_added", function (childSnapshot) {
+                    console.log(childSnapshot.val());
+
+                    var bookName = childSnapshot.val().name;
+                    var author = childSnapshot.val().author;
+                    var isbn = childSnapshot.val().isbn;
+                    $("#owned-table > tbody").append("<tr><td>" + bookName + "</td><td>" + author + "</td><td>" + isbn +
+                        "</td><td>");
+
+                    // var newRow = $("<tr>");
+                    // newRow.addClass("row-");
+                    // var cell1 = $("<td>").text(childSnapshot.val().bookName);
+                    // var cell2 = $("<td>").text(childSnapshot.val().author);
+                    // var cell3 = $("<td>").text(childSnapshot.val().isbn);
+                    // newRow
+                    //     .append(cell1)
+                    //     .append(cell2)
+                    //     .append(cell3);
+
+                    // $("#tableContent").append(newRow);
                 });
             } else {
                 // No user is signed in.
@@ -175,8 +197,8 @@ $(document).ready(function () {
         };
 
         // Uploads book data to the database
-        db_books.child().push(newBook);
-
+        db_books.child(userToken).push(newBook);
+        console.log(userToken);
 
         // Alert
         alert("Book successfully added");
@@ -186,35 +208,7 @@ $(document).ready(function () {
         $("#auhtor-input").val("");
         $("#isbnn-input").val("");
     });
-
-    $(document).on("click", ".owned", function () {
-        //here add your code to create a firebase entry
-
-        console.log(childSnapshot.val());
-
-        // Store everything into a variable.
-        var bookName = childSnapshot.val().title;
-        var author = childSnapshot.val().author;
-        var isbn = childSnapshot.val().isbn;
-
-        // Add each book's data into the table
-        $("#book-table > tbody").append("<tr><td>" + bookName + "</td><td>" + author + "</td><td>" + isbn +
-            "</td><td>");
-
-        // let bookEntry1 = {
-        //     "author": "swaroop",
-        //     "title": "this is a test",
-        // }
-
-        // let bookEntry2 = {
-        //     "author": "swaroop1",
-        //     "title": "this is a test1",
-        // }
-
-        // db_books.child("A38Cat12FvcawCAj2eSNU2EOK543").push(bookEntry1);
-        // db_books.child("A38Cat12FvcawCAj2eSNU2EOK543").push(bookEntry2);
-
-    });
+    
     /****************************************************************************
     *****************************************************************************
        Search 
