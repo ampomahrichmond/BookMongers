@@ -41,26 +41,13 @@ $(document).ready(function () {
                     console.log("Page refreshed: " + username);
                     $('#welcomeMessage').html("<h1>Welcome " + username + "</h1>");
                 });
+                // reference to database to persist user owned list
                 db_books.child(userToken).on("child_added", function (childSnapshot) {
                     console.log(childSnapshot.val());
-
                     var bookName = childSnapshot.val().name;
                     var author = childSnapshot.val().author;
                     var isbn = childSnapshot.val().isbn;
-                    $("#owned-table > tbody").append("<tr><td>" + bookName + "</td><td>" + author + "</td><td>" + isbn +
-                        "</td><td>");
-
-                    // var newRow = $("<tr>");
-                    // newRow.addClass("row-");
-                    // var cell1 = $("<td>").text(childSnapshot.val().bookName);
-                    // var cell2 = $("<td>").text(childSnapshot.val().author);
-                    // var cell3 = $("<td>").text(childSnapshot.val().isbn);
-                    // newRow
-                    //     .append(cell1)
-                    //     .append(cell2)
-                    //     .append(cell3);
-
-                    // $("#tableContent").append(newRow);
+                    $("#owned-table > tbody").append("<tr><td>" + bookName + "</td><td>" + author + "</td><td>" + isbn + "</td><td>");
                 });
             } else {
                 // No user is signed in.
@@ -163,22 +150,6 @@ $(document).ready(function () {
         add book entries to Firebase 
     *****************************************************************************
     *****************************************************************************/
-    // $(document).on("click", ".owned", function () {
-    //     //here add your code to create a firebase entry
-    //     let bookEntry1 = {
-    //         "author": "swaroop",
-    //         "title": "this is a test",
-    //     }
-
-    //     let bookEntry2 = {
-    //         "author": "swaroop1",
-    //         "title": "this is a test1",
-    //     }
-
-    //     db_books.child("A38Cat12FvcawCAj2eSNU2EOK543").push(bookEntry1);
-    //     db_books.child("A38Cat12FvcawCAj2eSNU2EOK543").push(bookEntry2);
-
-    // });
     // Button to add books
     $("#add-book-btn").on("click", function (event) {
         event.preventDefault();
@@ -188,8 +159,7 @@ $(document).ready(function () {
         var author = $("#author-input").val().trim();
         var isbn = $("#isbn-input").val().trim();
 
-
-        // Creates local "temporary" object for holding train data
+        // Creates local "temporary" object for holding book data
         var newBook = {
             name: bookName,
             author: author,
@@ -205,8 +175,8 @@ $(document).ready(function () {
 
         // Clears all of the text-boxes
         $("#book-name-input").val("");
-        $("#auhtor-input").val("");
-        $("#isbnn-input").val("");
+        $("#author-input").val("");
+        $("#isbn-input").val("");
     });
     
     /****************************************************************************
