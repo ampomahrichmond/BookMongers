@@ -248,10 +248,10 @@ $(document).ready(function () {
                 var authorDisplay = $('<h5 class = "center-align black-text">' + author + '</h5>');
                 var img = $('<img class ="image" id="bookImage">');
                 img.attr('src', url);
-                var infoLink = $('<a href= ' + moreInfo + ' > More Information </a>');
+                var infoLink = $('<a href= ' + moreInfo + ' target="_blank"> More Information </a>');
                 var save = $("<button>");
                 // Adding a class of book-btn to our button
-                save.addClass("owned-btn");
+                save.addClass("ownedBtn");
                 // Adding a data-attribute
                 save.attr("data-name", response[i]);
                 save.text("Add to Owned Books");
@@ -260,7 +260,7 @@ $(document).ready(function () {
                 div.append(authorDisplay);
                 div.append(img);
                 div.append(infoLink);
-                div.append(save);
+                // div.append(save);
                 $('#book-view').append(div);
 
                 //     $(".owned-btn").on("click", function (event) {
@@ -275,6 +275,11 @@ $(document).ready(function () {
 
         });
     }
+
+    $(document).on('click', '.ownedBtn', () => {
+        let bookObject = $(this).data("name");
+        console.log(bookObject);
+    })
 
     // *****************************************************************************
     // *****************************************************************************/
@@ -294,7 +299,6 @@ $(document).ready(function () {
             method: "GET"
         }).then((response) => {
             console.log(response);
-            var results = response.data.items.length;
 
             for (i = 0; i < response.items.length; i++) {
                 console.log(response.items[i]);
