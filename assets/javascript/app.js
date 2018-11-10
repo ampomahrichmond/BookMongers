@@ -171,20 +171,20 @@ $(document).ready(function () {
         console.log(userToken);
 
         // Alert
-        alert("Book successfully added");
+        $("#msgForm").text("Book successfully added");
 
         // Clears all of the text-boxes
         $("#book-name-input").val("");
         $("#author-input").val("");
         $("#isbn-input").val("");
     });
-    
+
     // ****************************************************************************
     // *****************************************************************************
     //    Search 
 
     // This function handles events where a book button is clicked on
-    $("#btnSearcg").on("click", function (event) {
+    $("#btnSearch").on("click", function (event) {
         event.preventDefault();
         //     // This line grabs the input from the textbox
         var book = $("#txtSearch").val().trim();
@@ -332,7 +332,7 @@ $(document).ready(function () {
             return true;
         }
         if (name == " ") {
-            alert("Name Field cannot be left empty");
+            // alert("Name Field cannot be left empty");
             return false;
         }
         return false;

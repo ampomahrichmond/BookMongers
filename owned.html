@@ -50,120 +50,124 @@
                             <!-- owned books-->
                             <div class="panel panel-success">
                                 <div class="panel-heading">
-                                <div class="center-align">
-                                    <h3 class="panel-title"><strong>My Books</strong></h3>
+                                    <div class="center-align">
+                                        <h3 class="panel-title"><strong>My Books</strong></h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <table class="table table-hover" id='owned-table'>
+                                            <thead>
+                                                <tr>
+                                                    <th>Title</th>
+                                                    <th>Author</th>
+                                                    <th>ISBN</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
-                                <div class="panel-body">
-                                    <table class="table table-hover" id='owned-table'>
-                                        <thead>
-                                            <tr>
-                                                <th>Title</th>
-                                                <th>Author</th>
-                                                <th>ISBN</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
 
-                            <!-- Add book  -->
-                            <br>   
+                                <!-- Add book  -->
+                                <br>
+                                <div id="msgForm"></div>
+                                <!-- Entry Form -->
+                                <form>
+                                    <div class="panel panel-success">
+                                        <div class="card-image">
+                                            <img src="./assets/images/bookback.png">
+                                            <div class="panel-heading">
+                                                <div class="center-align">
+                                                    <h4 class="panel-title"><strong>Add New Book</strong></h4>
+                                                </div>
+                                                <div class="panel-body">
 
-                                    <!-- Entry Form -->
-                                    <form>
-                                            <div class="panel panel-success">
-                                                    <div class="card-image">
-                                                            <img src="./assets/images/bookback.png">
-                                                    <div class="panel-heading">
-                                                    <div class="center-align">
-                                                        <h4 class="panel-title"><strong>Add New Book</strong></h4>
-                                                    </div>
-                                                    <div class="panel-body">
-                                                    
-                                            <div class="row">
-                                                    <div class="col s12 cards-container">
-                                                       <div class="card blue-grey darken-1">
-                                                         <div class="card-content Green-text">
-                                        <div class="form-content white-text">
-                                            <div class="form-group">
-                                                <label for="book-name-input">Book Name</label>
-                                                <input class="form-control" id="book-name-input" type="text">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="author-input">Author</label>
-                                                <input class="form-control" id="author-input" type="text">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="isbn-input">ISBN</label>
-                                                <input class="form-control" id="isbn-input" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="center-align"> 
-                                        <button class="btn btn-success" id="add-book-btn" type="submit">Submit</button>
-                                    </form>
-                                </div>
+                                                    <div class="row">
+                                                        <div class="col s12 cards-container">
+                                                            <div class="card blue-grey darken-1">
+                                                                <div class="card-content Green-text">
+                                                                    <div class="form-content white-text">
+                                                                        <div class="form-group">
+                                                                            <label for="book-name-input">Book Name</label>
+                                                                            <input class="form-control" id="book-name-input"
+                                                                                type="text">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="author-input">Author</label>
+                                                                            <input class="form-control" id="author-input"
+                                                                                type="text">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="isbn-input">ISBN</label>
+                                                                            <input class="form-control" id="isbn-input"
+                                                                                type="text">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="center-align">
+                                                                        <button class="btn btn-success" id="add-book-btn"
+                                                                            type="submit">Submit</button>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col s12 m4 l2">
-            <p></p>
-        </div>
+    </div>
+    <div class="col s12 m4 l2">
+        <p></p>
+    </div>
 
-        <!-- Query Modal -->
-        <div id="quoteModal" class="modal">
-            <!-- <div class="row"> -->
-            <div class="col s12 m6">
-                <div class="card">
-                    <div class="parallax-container">
-                        <div class="parallax">
-                            <img src="./assets/images/quotebackground.jpg">
-                        </div>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col s12 center">
-                                    <h1><b>QUOTE</b></h1>
-                                    <div id="quote"></div>
-                                    <div id="author"></div>
-                                </div>
+    <!-- Query Modal -->
+    <div id="quoteModal" class="modal">
+        <!-- <div class="row"> -->
+        <div class="col s12 m6">
+            <div class="card">
+                <div class="parallax-container">
+                    <div class="parallax">
+                        <img src="./assets/images/quotebackground.jpg">
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col s12 center">
+                                <h1><b>QUOTE</b></h1>
+                                <div id="quote"></div>
+                                <div id="author"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="card-action center-align">
-                        <a class="waves-effect waves-light btn" id="btnQuoteModalClose" href="#">Close
-                            <i class="material-icons right">close</i></a>
-                    </div>
                 </div>
-                <!-- </div> -->
+                <div class="card-action center-align">
+                    <a class="waves-effect waves-light btn" id="btnQuoteModalClose" href="#">Close
+                        <i class="material-icons right">close</i></a>
+                </div>
             </div>
+            <!-- </div> -->
         </div>
+    </div>
 
-        <!-- Signout Modal -->
-        <div id="signoutModal" class="modal">
-            <div class="col s12 m6">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="./assets/images/thankyou.jpg">
-                    </div>
-                    <div class="card-content">
-                        <p>Thank You for using our services, please visit us again.</p>
-                    </div>
-                    <div class="card-action center-align">
-                        <a class="waves-effect waves-light btn" href="index.html">Close
-                            <i class="material-icons right">close</i></a>
-                    </div>
+    <!-- Signout Modal -->
+    <div id="signoutModal" class="modal">
+        <div class="col s12 m6">
+            <div class="card">
+                <div class="card-image">
+                    <img src="./assets/images/thankyou.jpg">
+                </div>
+                <div class="card-content">
+                    <p>Thank You for using our services, please visit us again.</p>
+                </div>
+                <div class="card-action center-align">
+                    <a class="waves-effect waves-light btn" href="index.html">Close
+                        <i class="material-icons right">close</i></a>
                 </div>
             </div>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <!-- Compiled and minified JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
-        <script src="./assets/javascript/app.js"></script>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+    <script src="./assets/javascript/app.js"></script>
 
 </body>
 
