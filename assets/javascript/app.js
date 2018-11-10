@@ -179,11 +179,105 @@ $(document).ready(function () {
         $("#isbn-input").val("");
     });
     
-    /****************************************************************************
-    *****************************************************************************
-       Search 
-    *****************************************************************************
-    *****************************************************************************/
+    // ****************************************************************************
+    // *****************************************************************************
+    //    Search 
+
+    // This function handles events where a book button is clicked on
+    $("#btnSearcg").on("click", function (event) {
+        event.preventDefault();
+        //     // This line grabs the input from the textbox
+        var book = $("#txtSearch").val().trim();
+        // Adding the searched book from the textbox to our array
+        // books.push(book);
+        // Calling renderButtons which handles the processing of our books array
+        // renderButtons();
+        displayBookInfo(book);
+        // this is calling the function passing in the what user typed
+
+    });
+
+    // // This function handles events where a book button is clicked on
+    $("#btnReset").on("click", function (event) {
+        event.preventDefault();
+        //     // This line grabs the input from the textbox
+        var book = $("#txtSearch").val().trim();
+        // Adding the searched book from the textbox to our array
+        // books.push(book);
+        // Calling renderButtons which handles the processing of our books array
+        // renderButtons();
+        // displayBookInfo(book);
+        $("#book-view").empty()
+
+        // Clearing the results when the user clicks on the "Reset" button
+        location.reload();
+    });
+
+    // // Function for dumping the JSON content for each button into the div
+    function displayBookInfo(userBook) {
+        console.log("displayBookInfo");
+        console.log(userBook);
+
+        // Method to replace dipslayed books with newly selected books
+        $("#book-view").empty()
+
+        // var books = $(this).attr("data-name");
+        var queryURL = "https://www.googleapis.com/books/v1/volumes?q=" + userBook + "&api_key=AIzaSyA4XTI4Xb3uAaUVL1W5TvBR_blUC4HQbTg";
+        // Creating an AJAX call for the specific book button being clicked on
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            console.log(response);
+
+            for (i = 0; i < response.items.length; i++) {
+
+                var url = response.items[i].volumeInfo.imageLinks.thumbnail;
+                var moreInfo = response.items[i].volumeInfo.infoLink;
+                var title = response.items[i].volumeInfo.title;
+                var author = response.items[i].volumeInfo.authors[0];
+
+                console.log(url);
+                console.log(moreInfo);
+                console.log(title);
+                console.log(author);
+
+                // REPLACE WITH MATERIALIZE PROJECT CLASSES AND ID'S USED FOR PROJECT's HTML FILE//
+
+                var titleDisplay = $('<h5 class = "center-align black-text">' + title + '</h5>');
+                var authorDisplay = $('<h5 class = "center-align black-text">' + author + '</h5>');
+                var img = $('<img class ="image" id="bookImage">');
+                img.attr('src', url);
+                var infoLink = $('<a href= ' + moreInfo + ' > More Information </a>');
+                var save = $("<button>");
+                // Adding a class of book-btn to our button
+                save.addClass("owned-btn");
+                // Adding a data-attribute
+                save.attr("data-name", response[i]);
+                save.text("Add to Owned Books");
+                var div = $("<div>");
+                div.append(titleDisplay);
+                div.append(authorDisplay);
+                div.append(img);
+                div.append(infoLink);
+                div.append(save);
+                $('#book-view').append(div);
+
+                //     $(".owned-btn").on("click", function (event) {
+                //         var div = $("<div>");
+                //         div.append(titleDisplay);
+                //         div.append(authorDisplay);
+                //         div.append(img);
+                //         div.append(infoLink);
+                //         $('#owned-table').append(div);
+                // });
+            }
+
+        });
+    }
+
+    // *****************************************************************************
+    // *****************************************************************************/
 
     var apiKey = "&api_key=AIzaSyAEoZnDs6l4qoPHa6jFkYCfl1ukpV5Wowk";
 
